@@ -1,12 +1,9 @@
 [global]
-log_to_syslog_facility =
-log_to_syslog =
-log_to_syslog_level =
-fsid =
 cluster_network =
 mon_host =
 public_network =
 mon_initial_members =
+fsid =
 osd_pool_default_pg_num =
 osd_pool_default_pgp_num =
 osd_journal_size =

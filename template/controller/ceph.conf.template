@@ -1,11 +1,11 @@
 [global]
-log_to_syslog_level = info
-log_to_syslog = False
-log_to_syslog_facility = LOG_LOCAL0
 auth_cluster_required = cephx
 auth_service_required = cephx
 auth_client_required = cephx
 filestore_xattr_use_omap = true
+log_to_syslog_level = info
+log_to_syslog = False
+log_to_syslog_facility = LOG_LOCAL0
 auth_supported = cephx
 osd_mkfs_type = xfs
 [client]

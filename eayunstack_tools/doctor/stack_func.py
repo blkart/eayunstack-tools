@@ -262,7 +262,10 @@ def check_node_profiles(role):
     component_list = eval('get_%s_component' % role)()
     for c in component_list:
         LOG.info('Checking "%s" Component' % c.capitalize())
-        profile_list = eval('get_%s_profiles' % c)()
+        if c == 'ceph':
+            profile_list = eval('get_%s_%s_profiles' % (role, c))()
+        else:
+            profile_list = eval('get_%s_profiles' % c)()
         for p in profile_list:
             LOG.debug('Profile: ' + p)
             check_profile(p, role)
@@ -273,14 +276,14 @@ def check_node_services(node):
     for c in component_list:
         LOG.info('Checking "%s" Component' % c.capitalize())
         LOG.debug('-Service Status')
-        if c == 'nova':
+        if c == 'nova' or c == 'ceph':
             service_list = eval('get_%s_%s_services' % (node, c))()
         else:
             service_list = eval('get_%s_services' % c)()
         for s in service_list:
            # utils.check_service(s)
             check_service(s)
-        if node != 'controller':
+        if node != 'controller' or c == 'ceph':
             continue
         LOG.debug('-DB Connectivity')
         check_db_connect(c)

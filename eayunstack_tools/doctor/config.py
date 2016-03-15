@@ -31,6 +31,14 @@ mongo_p = [
         '/etc/mongodb.conf'
         ]
 
+controller_ceph_p = [
+        '/etc/ceph/ceph.conf'
+        ]
+
+ceph_osd_ceph_p = [
+        '/etc/ceph/ceph.conf'
+        ]
+
 # 'XXX_s' for XXX's services list
 
 keystone_s = [
@@ -77,6 +85,12 @@ mongo_s = [
         'mongod'
         ]
 
+controller_ceph_s = [
+        ]
+
+ceph_osd_ceph_s = [
+        ]
+
 # component db profile list
 
 component_db_p = {
@@ -107,7 +121,8 @@ controller_c = [
         'nova',
         'neutron',
         'cinder',
-        'ceilometer'
+        'ceilometer',
+        'ceph'
         ]
 
 compute_c = [
@@ -116,6 +131,10 @@ compute_c = [
 
 mongo_c = [
         'mongo'
+        ]
+
+ceph_osd_c = [
+        'ceph'
         ]
 
 # return profile list
@@ -140,6 +159,12 @@ def get_ceilometer_profiles():
 
 def get_mongo_profiles():
     return mongo_p
+
+def get_controller_ceph_profiles():
+    return controller_ceph_p
+
+def get_ceph_osd_ceph_profiles():
+    return ceph_osd_ceph_p
 
 # return services list
 
@@ -167,6 +192,12 @@ def get_ceilometer_services():
 def get_mongo_services():
     return mongo_s
 
+def get_controller_ceph_services():
+    return controller_ceph_s
+
+def get_ceph_osd_ceph_services():
+    return ceph_osd_ceph_s
+
 # return db profile
 
 def get_db_profile():
@@ -182,6 +213,9 @@ def get_compute_component():
 
 def get_mongo_component():
     return mongo_c
+
+def get_ceph_osd_component():
+    return ceph_osd_c
 
 # return a list of commands for check component availability
 
